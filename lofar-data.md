@@ -1,38 +1,38 @@
 
 # Table of Contents
 
-1.  [LINC](#org5e33c6d)
-    1.  [Installation](#orgae55e04)
-    2.  [Downloading data](#org06ffdc3)
-        1.  [Preparing data](#org569d651)
-    3.  [Running](#orgc9784b5)
-        1.  [Running LINC pipeline](#org2f6a8f6)
-        2.  [Debugging](#org1e4fcc5)
-    4.  [Scripts](#org4e08a46)
-    5.  [Possible issues](#orgca19be5)
-        1.  [Failing on `download_target_skymodel`](#org672ba6b)
-        2.  [Wrong download URL](#org91848b6)
-        3.  [A different wrong download URL?](#org1f93f9a)
-        4.  [Failing on `target/structure_function`](#org9136479)
-        5.  [OSError: [Errno 30] Read-only file system](#org9bb5285)
-2.  [WSClean](#org52ae473)
-    1.  [Basic Imaging Command](#org3712a72)
-    2.  [msoverview](#org23cc750)
-    3.  [Output](#org909ebac)
-3.  [Struis](#org51380a6)
-4.  [TRAP](#orgefe374e)
-    1.  [Installation &#x2013; for tkp4.0 / python2.7 version](#org95dba30)
-        1.  [change commands to conda create env commands](#org4153c8c)
-    2.  [Setting up TRAP](#orgba80515)
-        1.  [TKP PostgreSQL Login Details](#orgb0bccbb)
-    3.  [Using TRAP](#org7896c3b)
-5.  [PostgreSQL](#org0e05080)
-    1.  [Deleting databases](#orgb610a8d)
-6.  [Banana](#org72ddcbb)
+1.  [LINC](#orgd8871df)
+    1.  [Installation](#orgc06d139)
+    2.  [Downloading data](#orgd663ead)
+        1.  [Preparing data](#orgf575a83)
+    3.  [Running](#orga5237bf)
+        1.  [Running LINC pipeline](#org9759987)
+        2.  [Debugging](#orge2d2b70)
+    4.  [Scripts](#org36601c7)
+    5.  [Possible issues](#org5617798)
+        1.  [Failing on `download_target_skymodel`](#org95c345c)
+        2.  [Wrong download URL](#org55efb3e)
+        3.  [A different wrong download URL?](#orgfd5d2ee)
+        4.  [Failing on `target/structure_function`](#org254f391)
+        5.  [OSError: [Errno 30] Read-only file system](#org9c0709a)
+2.  [WSClean](#org3c2354e)
+    1.  [Basic Imaging Command](#org6ab25e0)
+    2.  [msoverview](#orgefd1772)
+    3.  [Output](#org71dea92)
+3.  [Struis](#orgae3cb05)
+4.  [TRAP](#org457c66e)
+    1.  [Installation &#x2013; for tkp4.0 / python2.7 version](#org470f119)
+        1.  [change commands to conda create env commands](#org53c760e)
+    2.  [Setting up TRAP](#org753a6ac)
+        1.  [TKP PostgreSQL Login Details](#org57886bc)
+    3.  [Using TRAP](#org227a1b1)
+5.  [PostgreSQL](#orge18cb75)
+    1.  [Deleting databases](#org6ea284d)
+6.  [Banana](#org60fbfc5)
 
 
 
-<a id="org5e33c6d"></a>
+<a id="orgd8871df"></a>
 
 # LINC
 
@@ -42,7 +42,7 @@ Pipeline documents: <https://linc.readthedocs.io/en/latest/>
 LOFAR LTA: <https://lta.lofar.eu>
 
 
-<a id="orgae55e04"></a>
+<a id="orgc06d139"></a>
 
 ## Installation
 
@@ -64,7 +64,7 @@ Pull the container from Astron or use the container already stored on ALICE.
 `/data/grbemission/shared/linc_latest.sif`
 
 
-<a id="org06ffdc3"></a>
+<a id="orgd663ead"></a>
 
 ## Downloading data
 
@@ -92,7 +92,7 @@ Open two terminals, one for calibrator and target, and open each to the director
 The c flag means that it&rsquo;ll carry on and resume from where it stopped in the case the download process is halted, the i flag just means it&rsquo;ll download files from the list within the .txt file. If you get 401 Authorization errors (more than once) then your LTA credentials aren&rsquo;t working.
 
 
-<a id="org569d651"></a>
+<a id="orgf575a83"></a>
 
 ### Preparing data
 
@@ -102,7 +102,7 @@ Once done, the downloaded sets will be .tar files with long names. There is an A
 Run this when you&rsquo;re in the directory with the tar files and it&rsquo;ll clean this up to just include the observation code and measurement number.
 
 
-<a id="orgc9784b5"></a>
+<a id="orga5237bf"></a>
 
 ## Running
 
@@ -128,7 +128,7 @@ It&rsquo;s also more convenient to pipe the output of the script straight into a
 If you haven&rsquo;t separated the calib and target datasets into separate directories, that&rsquo;s ok, just be sure to include a wildcard selecting only the correct ones when you add <directory>. The first run should just be calibrator data.
 
 
-<a id="org2f6a8f6"></a>
+<a id="org9759987"></a>
 
 ### Running LINC pipeline
 
@@ -186,8 +186,8 @@ When running on ALICE by default a whole process log file is created automatical
         # You shouldn't need to make any changes below this line.
         
         # Log and output directories within project folder - probably don't change.
-        export LINC_LOG_DIR=$WORKDIR/calibration_pipeline/logdir
-        export LINC_OUT_DIR=$WORKDIR/calibration_pipeline/outdir
+        export LINC_LOG_DIR=$WORK_DIR/calibration_pipeline/logdir
+        export LINC_OUT_DIR=$WORK_DIR/calibration_pipeline/outdir
         
         module load apptainer
         
@@ -226,7 +226,7 @@ When running on ALICE by default a whole process log file is created automatical
         }
 
 
-<a id="org1e4fcc5"></a>
+<a id="orge2d2b70"></a>
 
 ### Debugging
 
@@ -240,7 +240,7 @@ Include these options for debugging.
 Note this adds a whole lot of extra time (and I assume memory to the job). It will also generate a lot of log files within tmpdir which uses a lot of storage.
 
 
-<a id="org4e08a46"></a>
+<a id="org36601c7"></a>
 
 ## Scripts
 
@@ -250,19 +250,19 @@ Some useful scripts, example submission scripts etc.
 For GRB followup datasets there should be bands 000-243. On one occasion one was missing, so this is a simple script to just say which one is missing.
 
 
-<a id="orgca19be5"></a>
+<a id="org5617798"></a>
 
 ## Possible issues
 
-Just things that came up as potential issues for me. These may just be user error, specific problems with the datasets, or things that have since been fixed by ASTRON. Most common error will be the structure<sub>function</sub> issue.
+Just things that came up as potential issues for me. These may just be user error, specific problems with the datasets, or things that have since been fixed by ASTRON. Most common error will be the structure<sub>function</sub> issue as a result of poor quality data.
 
 
-<a id="org672ba6b"></a>
+<a id="org95c345c"></a>
 
 ### Failing on `download_target_skymodel`
 
 
-<a id="org91848b6"></a>
+<a id="org55efb3e"></a>
 
 ### Wrong download URL
 
@@ -270,7 +270,7 @@ Edit $LINCDIR/scripts/download<sub>skymodel</sub><sub>target.py</sub>
 Line 120 - change URL `gsmv4` to `gsmv5`
 
 
-<a id="org1f93f9a"></a>
+<a id="orgfd5d2ee"></a>
 
 ### A different wrong download URL?
 
@@ -280,7 +280,7 @@ In this case, just follow the actual URL to the page. Create file target.skymode
 `"target_skymodel": {"class": "File", "path": "/path/to/target.skymodel"}`
 
 
-<a id="org9136479"></a>
+<a id="org254f391"></a>
 
 ### Failing on `target/structure_function`
 
@@ -288,21 +288,21 @@ Usually due to flagged data making some or all bands band, or totally deleted.
 To .json add `'make_structure_function': false`
 
 
-<a id="org9bb5285"></a>
+<a id="org9c0709a"></a>
 
 ### OSError: [Errno 30] Read-only file system
 
 The error is a bit misleading. Essentially it seems the pipeline doesn&rsquo;t like to create it&rsquo;s own folders - specifically where this is failing is the log and out directories. If you&rsquo;ve set the log directory to `/calibration_pipeline/logdir/`, then these directories should exist beforehand as the pipeline cannot create them. Same goes for outdir.
 
 
-<a id="org52ae473"></a>
+<a id="org3c2354e"></a>
 
 # WSClean
 
 Software is included in the LINC Singularity container - this needs to be active to run WSClean.
 
 
-<a id="org3712a72"></a>
+<a id="org6ab25e0"></a>
 
 ## Basic Imaging Command
 
@@ -334,7 +334,7 @@ Timeslicing
     -interval A B               # Only use slices A to B of the whole dataset, splitting it into X chunks.
 
 
-<a id="org23cc750"></a>
+<a id="orgefd1772"></a>
 
 ## msoverview
 
@@ -342,7 +342,7 @@ Timeslicing
 View detailed information about the measurement sets. I believe this command is part of CASA, or in the Singularity container.
 
 
-<a id="org909ebac"></a>
+<a id="org71dea92"></a>
 
 ## Output
 
@@ -374,7 +374,7 @@ Example Recent Run
     *.ms
 
 
-<a id="org51380a6"></a>
+<a id="orgae3cb05"></a>
 
 # Struis
 
@@ -384,7 +384,7 @@ Struis - Amsterdam HPC system. You&rsquo;ll need to acquire login details for th
 [Login details](login-info.md)
 
 
-<a id="orgefe374e"></a>
+<a id="org457c66e"></a>
 
 # TRAP
 
@@ -393,7 +393,7 @@ Software for analysing LOFAR data.
 For Python3 - setup is easier (I&rsquo;ve saved the word to Documents somewhere but requires asking antonia for a python3 database I believe)
 
 
-<a id="org95dba30"></a>
+<a id="org470f119"></a>
 
 ## Installation &#x2013; for tkp4.0 / python2.7 version
 
@@ -425,12 +425,12 @@ Install tkp with developer mode with the &rsquo;-e&rsquo; tag, meaning we can us
     git checkout r5.0   # 5.0 is the python 2.7 version I think current banana uses
 
 
-<a id="org4153c8c"></a>
+<a id="org53c760e"></a>
 
 ### TODO change commands to conda create env commands
 
 
-<a id="orgba80515"></a>
+<a id="org753a6ac"></a>
 
 ## Setting up TRAP
 
@@ -449,7 +449,7 @@ Ensure you&rsquo;re the virtual environment you setup.
     trap-manage.py initdb
 
 
-<a id="orgb0bccbb"></a>
+<a id="org57886bc"></a>
 
 ### TKP PostgreSQL Login Details
 
@@ -457,7 +457,7 @@ Ensure you&rsquo;re the virtual environment you setup.
 `5tF69ShycX`
 
 
-<a id="org7896c3b"></a>
+<a id="org227a1b1"></a>
 
 ## Using TRAP
 
@@ -477,7 +477,7 @@ tail -f trap<sub>output.log</sub>
 \#end<sub>src</sub>
 
 
-<a id="org0e05080"></a>
+<a id="orge18cb75"></a>
 
 # PostgreSQL
 
@@ -492,7 +492,7 @@ LOFAR specific useful commands:
     \copy extractedsource TO '/scratch/ahennessey/extract_240414a.csv' CSV HEADER;
 
 
-<a id="orgb610a8d"></a>
+<a id="org6ea284d"></a>
 
 ## Deleting databases
 
@@ -501,7 +501,7 @@ Access the database as above, then after using `\dt` to list tables, you can use
 [Foreign key issues!](file:///Users/ah724/org/guides/software.md)
 
 
-<a id="org72ddcbb"></a>
+<a id="org60fbfc5"></a>
 
 # Banana
 
