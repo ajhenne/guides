@@ -1,31 +1,32 @@
 
 # Table of Contents
 
-1.  [Doom Emacs](#org4665e71)
-    1.  [org-agenda](#org723170b)
-    2.  [pdf-tools](#org7df29d6)
-    3.  [Quick Functions to sort](#org56a79b1)
-2.  [HPC Usage](#org99d16cf)
-3.  [Conda](#org3d29b30)
-4.  [Poetry](#org5e0bbc0)
-    1.  [Install](#orgac16fab)
-    2.  [Development](#orgd3a058c)
-    3.  [Uninstall](#org7960fcb)
-5.  [Pyenv](#orgff82dcf)
-6.  [PostgreSQL](#orgeabb84f)
-    1.  [PSQL commands](#orgaf684d7)
-    2.  [SQL commands](#org16a4bb5)
-        1.  [Solving foreign key issues](#orgb501b09)
+1.  [Doom Emacs](#orgc416078)
+    1.  [org-agenda](#org99a08c7)
+    2.  [pdf-tools](#org9dcb07a)
+    3.  [Quick Functions to sort](#org42f4a94)
+2.  [HPC Usage](#org8754fc4)
+3.  [Conda](#orga49ec6a)
+4.  [Poetry](#org3aa363f)
+    1.  [Install](#orgf84d6f5)
+    2.  [Development](#orgc69c6af)
+    3.  [Uninstall](#orge72b0cb)
+5.  [Pyenv](#orgbf87636)
+6.  [Python virtual environments](#orgff4bf32)
+7.  [PostgreSQL](#org4c956d7)
+    1.  [PSQL commands](#org89efb8a)
+    2.  [SQL commands](#orga4d8081)
+        1.  [Solving foreign key issues](#orgb59ebc5)
 
 Basic instructions for a number of software(s) and packages that aren&rsquo;t specific to an instrument, etc.
 
 
-<a id="org4665e71"></a>
+<a id="orgc416078"></a>
 
 # Doom Emacs
 
 
-<a id="org723170b"></a>
+<a id="org99a08c7"></a>
 
 ## org-agenda
 
@@ -43,36 +44,30 @@ Basic instructions for a number of software(s) and packages that aren&rsquo;t sp
 <td class="org-left">open the org agenda menu</td>
 </tr>
 
-
 <tr>
 <td class="org-left">SPC m t</td>
 <td class="org-left">change the todo state of a task</td>
 </tr>
-
 
 <tr>
 <td class="org-left">SPC s i</td>
 <td class="org-left">search for headings</td>
 </tr>
 
-
 <tr>
 <td class="org-left">C-c C-j</td>
 <td class="org-left">org-goto -&gt; find by headings</td>
 </tr>
-
 
 <tr>
 <td class="org-left">C-c C-f</td>
 <td class="org-left">go to next heading same level</td>
 </tr>
 
-
 <tr>
 <td class="org-left">C-c C-b</td>
 <td class="org-left">go to previous heading same level</td>
 </tr>
-
 
 <tr>
 <td class="org-left">C-c C-t</td>
@@ -82,7 +77,7 @@ Basic instructions for a number of software(s) and packages that aren&rsquo;t sp
 </table>
 
 
-<a id="org7df29d6"></a>
+<a id="org9dcb07a"></a>
 
 ## pdf-tools
 
@@ -104,7 +99,7 @@ Follow instructions from there.
 If you try to run these steps without installing expat, before the expat error comes up there will be an error about &rsquo;poppler&rsquo; not being installed/at the correct version, even if this is not true. This can be safely ignored and installation should run fine once dependencies are met.
 
 
-<a id="org56a79b1"></a>
+<a id="org42f4a94"></a>
 
 ## Quick Functions to sort
 
@@ -124,7 +119,7 @@ doi-utils-get-bibtex-entry-pdf - get a pdf for an entry if it doesn&rsquo;t exis
 doi-utils-add-bibtex-entry-from-doi - add doi entry to bib file (should also download pdf)
 
 
-<a id="org99d16cf"></a>
+<a id="org8754fc4"></a>
 
 # HPC Usage
 
@@ -138,7 +133,7 @@ Delete a file from the queue.
 `sdel <jobid>`
 
 
-<a id="org3d29b30"></a>
+<a id="orga49ec6a"></a>
 
 # Conda
 
@@ -155,18 +150,21 @@ Activate/deactivate an environment:
 Delete an environment:
 `conda remove -n <env_name> --all`
 
-List all packages in an environment:
+List all packages and versions in an environment:
 `conda list`
 
+Update a package.
+`conda update <package>`
 
-<a id="org5e0bbc0"></a>
+
+<a id="org3aa363f"></a>
 
 # Poetry
 
 Used to manage, develop and publihs code repositories. Install to local machine, and it can be used to create it&rsquo;s own virtual environment to install dependencies and develop code in. Don&rsquo;t use it from within a conda environment.
 
 
-<a id="orgac16fab"></a>
+<a id="orgf84d6f5"></a>
 
 ## Install
 
@@ -189,7 +187,7 @@ Setup the link to PyPi - aquire token from website first.
     poetry config repositories
 
 
-<a id="orgd3a058c"></a>
+<a id="orgc69c6af"></a>
 
 ## Development
 
@@ -206,7 +204,7 @@ With development directory open in VSCode, Emacs, etc.
     poetry publish --build --repository <pypi_pkg_name>
 
 
-<a id="org7960fcb"></a>
+<a id="orge72b0cb"></a>
 
 ## Uninstall
 
@@ -214,7 +212,7 @@ To uninstall:
 ~curl -sSL <https://install.python-poetry.org> &#x2013;uninstall | python3
 
 
-<a id="orgff82dcf"></a>
+<a id="orgbf87636"></a>
 
 # Pyenv
 
@@ -224,17 +222,29 @@ Manager to install and swap between multiple versions of python.
 
 `pyenv global 3.X.X` -> make this version the global
 
+`pyenv shell <version>` -> activate this version for just the shell
+
 `pyenv versions` -> list installed versions
 
+Python2 -> You can use 2.7.18
 
-<a id="orgeabb84f"></a>
+
+<a id="orgff4bf32"></a>
+
+# Python virtual environments
+
+Use the command:
+`python -m venv <path>`
+
+
+<a id="org4c956d7"></a>
 
 # PostgreSQL
 
 Database application for SQL tables.
 
 
-<a id="orgaf684d7"></a>
+<a id="org89efb8a"></a>
 
 ## PSQL commands
 
@@ -270,7 +280,7 @@ Database application for SQL tables.
     psql <dbname>
 
 
-<a id="org16a4bb5"></a>
+<a id="orga4d8081"></a>
 
 ## SQL commands
 
@@ -287,7 +297,7 @@ Use `psql` to enter the command prompt, then you can use SQL commands:
     DROP TABLE <table>;
 
 
-<a id="orgb501b09"></a>
+<a id="orgb59ebc5"></a>
 
 ### Solving foreign key issues
 
