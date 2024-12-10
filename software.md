@@ -1,32 +1,33 @@
 
 # Table of Contents
 
-1.  [Doom Emacs](#orgc416078)
-    1.  [org-agenda](#org99a08c7)
-    2.  [pdf-tools](#org9dcb07a)
-    3.  [Quick Functions to sort](#org42f4a94)
-2.  [HPC Usage](#org8754fc4)
-3.  [Conda](#orga49ec6a)
-4.  [Poetry](#org3aa363f)
-    1.  [Install](#orgf84d6f5)
-    2.  [Development](#orgc69c6af)
-    3.  [Uninstall](#orge72b0cb)
-5.  [Pyenv](#orgbf87636)
-6.  [Python virtual environments](#orgff4bf32)
-7.  [PostgreSQL](#org4c956d7)
-    1.  [PSQL commands](#org89efb8a)
-    2.  [SQL commands](#orga4d8081)
-        1.  [Solving foreign key issues](#orgb59ebc5)
+1.  [Doom Emacs](#org9cde933)
+    1.  [org-agenda](#org7799958)
+    2.  [pdf-tools](#org53009b1)
+    3.  [Quick Functions to sort](#org6789267)
+2.  [HPC Usage](#org6b3bba2)
+3.  [Conda](#orgf776080)
+4.  [Poetry](#orgc185a62)
+    1.  [Install](#org2db652f)
+    2.  [Development](#org762fcec)
+    3.  [Uninstall](#org531cbd2)
+5.  [Pyenv](#org466b3fe)
+6.  [Python virtual environments](#orgd8267e5)
+7.  [PostgreSQL](#org5a4fd69)
+    1.  [PSQL commands](#org5f243a0)
+    2.  [SQL commands](#org326f6f5)
+        1.  [Solving foreign key issues](#orga58490c)
+8.  [Apptainer](#org0ad3200)
 
 Basic instructions for a number of software(s) and packages that aren&rsquo;t specific to an instrument, etc.
 
 
-<a id="orgc416078"></a>
+<a id="org9cde933"></a>
 
 # Doom Emacs
 
 
-<a id="org99a08c7"></a>
+<a id="org7799958"></a>
 
 ## org-agenda
 
@@ -77,7 +78,7 @@ Basic instructions for a number of software(s) and packages that aren&rsquo;t sp
 </table>
 
 
-<a id="org9dcb07a"></a>
+<a id="org53009b1"></a>
 
 ## pdf-tools
 
@@ -99,7 +100,7 @@ Follow instructions from there.
 If you try to run these steps without installing expat, before the expat error comes up there will be an error about &rsquo;poppler&rsquo; not being installed/at the correct version, even if this is not true. This can be safely ignored and installation should run fine once dependencies are met.
 
 
-<a id="org42f4a94"></a>
+<a id="org6789267"></a>
 
 ## Quick Functions to sort
 
@@ -119,7 +120,7 @@ doi-utils-get-bibtex-entry-pdf - get a pdf for an entry if it doesn&rsquo;t exis
 doi-utils-add-bibtex-entry-from-doi - add doi entry to bib file (should also download pdf)
 
 
-<a id="org8754fc4"></a>
+<a id="org6b3bba2"></a>
 
 # HPC Usage
 
@@ -133,7 +134,7 @@ Delete a file from the queue.
 `sdel <jobid>`
 
 
-<a id="orga49ec6a"></a>
+<a id="orgf776080"></a>
 
 # Conda
 
@@ -157,14 +158,14 @@ Update a package.
 `conda update <package>`
 
 
-<a id="org3aa363f"></a>
+<a id="orgc185a62"></a>
 
 # Poetry
 
 Used to manage, develop and publihs code repositories. Install to local machine, and it can be used to create it&rsquo;s own virtual environment to install dependencies and develop code in. Don&rsquo;t use it from within a conda environment.
 
 
-<a id="orgf84d6f5"></a>
+<a id="org2db652f"></a>
 
 ## Install
 
@@ -187,7 +188,7 @@ Setup the link to PyPi - aquire token from website first.
     poetry config repositories
 
 
-<a id="orgc69c6af"></a>
+<a id="org762fcec"></a>
 
 ## Development
 
@@ -204,7 +205,7 @@ With development directory open in VSCode, Emacs, etc.
     poetry publish --build --repository <pypi_pkg_name>
 
 
-<a id="orge72b0cb"></a>
+<a id="org531cbd2"></a>
 
 ## Uninstall
 
@@ -212,7 +213,7 @@ To uninstall:
 ~curl -sSL <https://install.python-poetry.org> &#x2013;uninstall | python3
 
 
-<a id="orgbf87636"></a>
+<a id="org466b3fe"></a>
 
 # Pyenv
 
@@ -229,7 +230,7 @@ Manager to install and swap between multiple versions of python.
 Python2 -> You can use 2.7.18
 
 
-<a id="orgff4bf32"></a>
+<a id="orgd8267e5"></a>
 
 # Python virtual environments
 
@@ -237,14 +238,14 @@ Use the command:
 `python -m venv <path>`
 
 
-<a id="org4c956d7"></a>
+<a id="org5a4fd69"></a>
 
 # PostgreSQL
 
 Database application for SQL tables.
 
 
-<a id="org89efb8a"></a>
+<a id="org5f243a0"></a>
 
 ## PSQL commands
 
@@ -280,7 +281,7 @@ Database application for SQL tables.
     psql <dbname>
 
 
-<a id="orga4d8081"></a>
+<a id="org326f6f5"></a>
 
 ## SQL commands
 
@@ -297,11 +298,25 @@ Use `psql` to enter the command prompt, then you can use SQL commands:
     DROP TABLE <table>;
 
 
-<a id="orgb59ebc5"></a>
+<a id="orga58490c"></a>
 
 ### Solving foreign key issues
 
     -- remove and then add foreign key issues
     ALTER TABLE <table> DROP CONSTRAINT <contraint_name>;
     ALTER TABLE <table> ADD CONSTRAINT <constraint_name> FOREIGN KEY (<col_id>) REFERENCES table(<col_id>);
+
+
+<a id="org0ad3200"></a>
+
+# Apptainer
+
+Replacement of Singularity. For all the (few) times I&rsquo;ve had to use it so far, any command for Singularity still works if you just replace it with &rsquo;apptainer&rsquo;.
+
+To open the container into a shell:
+`singularity shell <container.sif>`
+
+More usefully you&rsquo;ll most likely need to bind scratch (and maybe data) otherwise the container cannot &rsquo;see&rsquo; them.
+This also needs to be done if you&rsquo;re just running the container, like as part of a HPC script.
+`singularity shell --bind /scratch:/scratch --bind /data:/data <container.sif>`
 
